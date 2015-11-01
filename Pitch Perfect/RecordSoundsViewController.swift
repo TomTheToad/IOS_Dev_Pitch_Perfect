@@ -42,6 +42,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         hideStopButton()
         hidePauseButton()
         enableRecordButton()
+        setRecordingLabelTextToIntro()
     }
 
     // Unused, delete?
@@ -52,14 +53,19 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
     // Begin Helper Functions:
     // Purposely coded flat for readability
-    // Hide the recording label
-    func hideRecordingLabel() {
-        recordingLabel.hidden = true
+    // Change recording label text
+    func setRecordingLabelTextToIntro() {
+        recordingLabel.text = "Tap to Record"
     }
     
-    // Show the recording label
-    func showRecordingLabel() {
-        recordingLabel.hidden = false
+    // Change recording label text to recording
+    func setRecordingLabelTextToRecording() {
+        recordingLabel.text = "Recording in Progress"
+    }
+    
+    // Change recording label text to paused
+    func setRecordingLabelTextPaused() {
+        recordingLabel.text = "Paused"
     }
     
     // Show stop button
@@ -97,13 +103,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     /// recordAudio
     /// - parameter: sender: UIButton
     @IBAction func recordAudio(sender: UIButton) {
-        showRecordingLabel()
+        setRecordingLabelTextToRecording()
         showStopButton()
         showPauseButton()
         disableRecordButton()
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        
         let recordingName = "my_audio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
@@ -133,9 +138,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag) {
             // Save the recorded audio
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            let filePathUrl = recorder.url
+            let title = recorder.url.lastPathComponent
+            recordedAudio = RecordedAudio(setFilePath: filePathUrl, setTitle: title!)
             
             // Perform a seque
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
@@ -167,9 +172,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if (audioRecorder.recording == true) {
             audioRecorder.pause()
             pauseButton.selected = true
+            setRecordingLabelTextPaused()
         } else {
             audioRecorder.record()
             pauseButton.selected = false
+            setRecordingLabelTextToRecording()
         }
     }
 
@@ -178,7 +185,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     /// stopRecordingAudio
     /// - parameter sender: UIButton (stopButton)
     @IBAction func stopRecordingAudio(sender: UIButton) {
-        hideRecordingLabel()
+        setRecordingLabelTextToIntro()
         hideStopButton()
         hidePauseButton()
         enableRecordButton()

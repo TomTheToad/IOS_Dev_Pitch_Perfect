@@ -27,7 +27,7 @@
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fI3-iD-SVv"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-0D-jnk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-0D-jnk">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -75,14 +75,14 @@
                                 <exclude reference="cWH-MN-SLz"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="mLF-81-ho2"/>
                                 <exclude reference="2Jd-DX-1s4"/>
                                 <exclude reference="BtF-v3-m0x"/>
-                                <exclude reference="D4T-fw-TQd"/>
-                                <exclude reference="Ohz-xg-1qU"/>
-                                <exclude reference="9Ra-eF-LIu"/>
                                 <exclude reference="FqK-yx-D9v"/>
                                 <exclude reference="iQp-Xq-qVu"/>
-                                <exclude reference="mLF-81-ho2"/>
+                                <exclude reference="9Ra-eF-LIu"/>
+                                <exclude reference="D4T-fw-TQd"/>
+                                <exclude reference="Ohz-xg-1qU"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -93,14 +93,14 @@
                                 <include reference="cWH-MN-SLz"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="mLF-81-ho2"/>
                                 <include reference="2Jd-DX-1s4"/>
                                 <include reference="BtF-v3-m0x"/>
-                                <include reference="D4T-fw-TQd"/>
-                                <include reference="Ohz-xg-1qU"/>
-                                <include reference="9Ra-eF-LIu"/>
                                 <include reference="FqK-yx-D9v"/>
                                 <include reference="iQp-Xq-qVu"/>
-                                <include reference="mLF-81-ho2"/>
+                                <include reference="9Ra-eF-LIu"/>
+                                <include reference="D4T-fw-TQd"/>
+                                <include reference="Ohz-xg-1qU"/>
                             </mask>
                         </variation>
                     </view>
